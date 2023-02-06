@@ -147,3 +147,31 @@
 #datatable .datatable-container .header-tools .tools ul li button{
     padding: var(--dt-padding-s) var(--dt-padding);
 }
+
+#datatable .datatable-container .datatable{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#datatable .datatable-container .datatable,
+#datatable .datatable-container .datatable th,
+#datatable .datatable-container .datatable td{
+    padding: var(--dt-padding) var(--dt-padding);
+}
+
+#datatable .datatable-container .datatable td{
+    font-weight: bolder;
+    text-align: left;
+    border-bottom: solid 1px var(--dt-border-color);
+}
+
+/* solo los even (pares) tiene un color distinto */
+#datatable .datatable-container .datatable tbody tr:nth-child(even){ 
+    background-color: var(--dt-even-row-color);
+}
+
+#datatable .datatable-container .datatable tbody tr:hover{
+    background-color: var(--dt-hover-cell-color);
+}
+
+
