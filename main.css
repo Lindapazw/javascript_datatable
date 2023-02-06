@@ -142,3 +142,8 @@
     border-radius: var(--dt-border-radius);
 }
 
+#datatable .datatable-container .footer-tools .pages ul li button,
+#datatable .datatable-container .footer-tools .pages ul li span,
+#datatable .datatable-container .header-tools .tools ul li button{
+    padding: var(--dt-padding-s) var(--dt-padding);
+}
