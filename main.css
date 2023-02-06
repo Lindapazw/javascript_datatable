@@ -56,6 +56,7 @@
     padding: var(--dt-padding);
     display: flex;
     align-items: baseline;
+    align-items: flex-start;
 }
 
 #datatable .datatable-container .header-tools .search{
@@ -68,8 +69,9 @@
     display: block;
     box-sizing: border-box;
     border-radius: var(--dt-border-radius);
-    border: solid 1px var(--dt-border-color);
+    border: solid 1px #fff;
     color: var(--dt-input-color);
+    padding: .5rem;
 }
 
 #datatable .datatable-container .header-tools .tools {
@@ -151,6 +153,7 @@
 #datatable .datatable-container .datatable{
     border-collapse: collapse;
     width: 100%;
+    text-align: justify;
 }
 
 #datatable .datatable-container .datatable,
@@ -174,4 +177,49 @@
     background-color: var(--dt-hover-cell-color);
 }
 
+#datatable .datatable-container .datatable tbody tr .available::after,
+#datatable .datatable-container .datatable tbody tr .away::after,
+#datatable .datatable-container .datatable tbody tr .offline::after{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#datatable .datatable-container .datatable tbody tr .available::after{
+    content: 'Online';
+    color: var(--dt-status-avalible-color);
+}
+
+#datatable .datatable-container .datatable tbody tr .away::after{
+    content: 'Away';
+    color: var(--dt-status-away-color);
+}
+
+#datatable .datatable-container .datatable tbody tr .offline::after{
+    content: 'Offline';
+    color: var(--dt-status-offline-color);
+}
+
+#datatable .datatable-container .datatable tbody tr .available::before,
+#datatable .datatable-container .datatable tbody tr .away::before,
+#datatable .datatable-container .datatable tbody tr .offline::before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+#datatable .datatable-container .datatable tbody tr .available::before{
+    background-color: var(--dt-status-avalible-color);
+}
+
+#datatable .datatable-container .datatable tbody tr .away::before{
+    background-color: var(--dt-status-away-color);
+}
+
+#datatable .datatable-container .datatable tbody tr .offline::before{
+    background-color: var(--dt-status-offline-color);
+}
 
