@@ -83,3 +83,15 @@
     justify-content: start;
     align-items: baseline;
 }
+
+#datatable .datatable-container .header-tools .tools ul li{
+    display: inline-block;
+    margin: 0 var(--dt-padding-xs);
+    align-items: baseline;
+}
+
+#datatable .datatable-container .footer-tools {
+    padding: var(--dt-padding);
+    display: flex;
+    align-items: baseline;
+}
