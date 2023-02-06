@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Roboto:wght@400;700;900&display=swap');
 
 .material-symbols-outlined {
     font-variation-settings:
@@ -6,3 +7,34 @@
     'GRAD' 0,
     'opsz' 48
 }
+
+:root{
+    --primary-color: white;
+    --secondary-color: rgb(61,68,73);
+    --highlight-color: #3282b8;
+
+    --dt-status-avalible-color: greenyellow ;
+    --dt-status-away-color: lightsalmon;
+    --dt-status-offline-color: lightgray;
+
+    --dt-padding: 12px;
+    --dt-padding-s: 6px;
+    --dt-padding-xs: 2px;
+
+    --dt-border-radius: 3px;
+
+    --dt-background-color-container: #2a3338;
+    --dt-border-color: var(--secondary-color);
+    --dt-bg-color:var(--highlight-color);
+    --dt-text-color: var(--primary-color);
+    --dt-bg-active-buttom: var(--highlight-color);
+    --dt-text-color-button: var(--primary-color);
+    --dt-text-color-active-button: var(--primary-color);
+    --dt-hover-cell-color: var(--highlight-color);
+    --dt-even-row-color: var(--secondary-color);
+    --dt-focus-color: var(--highlight-color);
+    --dt-input-background-color: var(--secondary-color);
+    --dt-input-color:var(--primary-color);
+
+}
+
