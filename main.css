@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-.material-symbols-outlined {
+/* .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
     'opsz' 48
-}
+} */
 
 :root{
     --primary-color: white;
@@ -42,5 +42,11 @@
 }
 
 .datatable-container{
-
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dt-background-color-container);
+    border-radius: var(--dt-border-radius);
+    color: var(--dt-text-color);
+    width: 600px;
+    margin: 0 auto;
+    font-size: 12px;
 }
