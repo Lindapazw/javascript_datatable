@@ -114,4 +114,31 @@
     justify-content: flex-end;
 }
 
+#datatable .datatable-container .footer-tools .pages ul li {
+    display:  inline-block;
+    margin: 0 var(--dt-padding-xs);
+}
+
+#datatable .datatable-container .footer-tools .pages ul li button,
+#datatable .datatable-container .header-tools .tools ul li button{
+    font-family: 'Roboto', sans-serif;
+    color: var(--dt-text-color-button);
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: var(--dt-border-radius);
+    background: transparent;
+    cursor: pointer;
+}
+
+#datatable .datatable-container .footer-tools .pages ul li button:hover,
+#datatable .datatable-container .header-tools .tools ul li button:hover{
+    background: var(--dt-bg-active-buttom);
+    color: var(--dt-text-color-active-button);
+}
+
+#datatable .datatable-container .footer-tools .pages ul li span.active{
+    background-color: var(--dt-bg-color);
+    border-radius: var(--dt-border-radius);
+}
 
