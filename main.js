@@ -109,7 +109,7 @@ class DataTable{
                     </ul>
                 </div>
                 <div class="search">
-                    <input type="text" class="search-input">
+                    <input type="text" class="search-input" placeholder="Buscador">
                 </div>
             </div>
             <table class="datatable">
@@ -140,7 +140,7 @@ class DataTable{
         this.element.querySelector('thead tr').innerHTML = '';
 
         this.headers.forEach(header => {
-            this.element.querySelector('thead tr').innerHTML = `<tr>${header}</tr>`;
+            this.element.querySelector('thead tr').innerHTML += `<th>${header}</th>`;
         });
     }
 
@@ -218,7 +218,45 @@ class DataTable{
     }
 
     renderPagesButtons(){
+        const pagesContainer = this.element.querySelector('.pages');
+        let pages = ''; 
 
+        const buttonsToShow = this.pagination.noButtonsBeforeDots;
+        const actualIndex = this.pagination.actual;
+
+        let limI = Math.max(actualIndex - 2, 1);
+        let limS = Math.min(actualIndex + 2, this.pagination.noPages);
+        const missinButtons = buttonsToShow - (limS - limI);
+
+        if(Math.max(limI - missinButtons)){
+            limI = limI - missinButtons;
+        } else if(Math.min(limS + missinButtons, this.pagination.noPages) != this.pagination.noPages){
+            limS =limS + missinButtons;
+        }
+
+        if(limS < (this.pagination.noPages - 2)){
+            pages += this.getIteratedButton(limI, limS);
+            pages += '<li> ... </li>';
+            pages += this.getIteratedButton(this.pagination.noPages - 1, this.pagination.noPages);
+        } else {
+            pages += this.getIteratedButton(limI, this.pagination.noPages);
+        }
+
+        pagesContainer.innerHTML = `<ul>${pages}<ul>`;
+    }
+
+    // Esta funsion sale de renderPagesButtons
+    getIteratedButton(start, end){
+        let res = '';
+        for(let i = start; i < end; i++){
+            if(i = this.pagination.actual){
+                res += `<li><span class="active">${i}</span></li>`;
+            } else{
+                res += `<li><button data-page="${i}">${i}</button></li>`;
+            }
+        }
+
+        return res;
     }
 
     renderHeadersButtons(){

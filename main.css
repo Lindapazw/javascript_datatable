@@ -27,7 +27,7 @@
     --dt-border-color: var(--secondary-color);
     --dt-bg-color:var(--highlight-color);
     --dt-text-color: var(--primary-color);
-    --dt-bg-active-buttom: var(--highlight-color);
+    --dt-bg-active-button: var(--highlight-color);
     --dt-text-color-button: var(--primary-color);
     --dt-text-color-active-button: var(--primary-color);
     --dt-hover-cell-color: var(--highlight-color);
@@ -135,7 +135,7 @@
 
 #datatable .datatable-container .footer-tools .pages ul li button:hover,
 #datatable .datatable-container .header-tools .tools ul li button:hover{
-    background: var(--dt-bg-active-buttom);
+    background: var(--dt-bg-active-button);
     color: var(--dt-text-color-active-button);
 }
 
