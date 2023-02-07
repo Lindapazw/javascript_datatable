@@ -75,6 +75,7 @@ class DataTable{
         container.id = this.element.id;
         this.element.innerHTML = '';
         this.element.replaceWith(container); // remplazo la tabla con el nuevo div
+        this.element = container;
 
         // definicion de funciones
         this.createHTML();
