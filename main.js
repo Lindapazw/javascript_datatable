@@ -169,6 +169,24 @@ class DataTable{
             });
 
             this.element.querySelector('tbody').innerHTML += `<tr>${data}</tr>`;
+
+            //listener para el checkbox
+            document.querySelectorAll('.datatable-checkbox').forEach(checkbox  => {
+                checkbox.addEventListener('click', e => {
+                    const element = e.target;
+                    const id= element.getAttribute('data-id');
+
+                    if(element,checkbox){
+                        const item = this.getItem(id);
+                        this.selected.push(item);
+                    }else{
+                        this.removeSelected(id);
+                    }
+
+                    // ** vemos en consola cada fila seleccionada **
+                    // console.log(this.selected);
+                });
+            });
         }
     }
 
@@ -184,6 +202,19 @@ class DataTable{
         });
 
         return res;
+    }
+
+    // Esta funsion sale de renderRows
+    getItem(id){
+        const res = this.items.filter( item => item.id == id );
+        if(res.length == 0) return null;
+        return res[0];
+    }
+
+    // Esta funsion sale de renderRows
+    removeSelected(id){
+        const res = this.selected.filter(item => item.id != id);
+        this.selected =[... res];
     }
 
     renderPagesButtons(){
