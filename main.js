@@ -34,9 +34,37 @@ class DataTable{
         const trs = [... this.element.querySelector('tbody').children];
 
         headers.forEach(element => {
-            this.headers.push(element.textContent);
-        });
+            this.headers.push(element.textContent); // recorre por fila
+        }); // trae el array para el headers
 
-        console.log(this.headers);
+        trs.forEach(tr => {
+            const cells = [ ... tr.children];
+
+            const item = {
+                id: this.generateUUID(),
+                values: []
+            };
+
+            cells.forEach(cell => {
+                if(cell.children.length > 0 ){
+                    // const status =  [... cell.children][0].getAtribute('class');
+                    const statusElement = [... cell.children][0];
+                    console.log(statusElement.getAttribute('class'));
+                    if(status != null ){
+                        item.values.push(`<span class='${status}'></span>`);
+                    }
+                } else {
+                    item.values.push(cell.textContent);
+                }
+            });
+
+            this.items.push(item);
+        }); 
+
+        console.log(this.items);
+    }
+
+    generateUUID(){
+        return (Date.now() * Math.floor(Math.random() * 100000)).toString();
     }
 }
