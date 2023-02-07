@@ -49,7 +49,7 @@ class DataTable{
                 if(cell.children.length > 0 ){
                     // const status =  [... cell.children][0].getAtribute('class');
                     const statusElement = [... cell.children][0];
-                    console.log(statusElement.getAttribute('class'));
+                    const status = statusElement.getAttribute('class');
                     if(status != null ){
                         item.values.push(`<span class='${status}'></span>`);
                     }
@@ -68,3 +68,4 @@ class DataTable{
         return (Date.now() * Math.floor(Math.random() * 100000)).toString();
     }
 }
+
