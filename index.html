@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <div id="datatable">
-        <div class="datatable-container">
-            <table class="datatable">
+            <table id="datatable" class="datatable">
                 <thead>
                     <tr>
                         <th></th>
@@ -117,8 +115,25 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-    
+
+
+    <!-- javascript -->
+    <script src="main.js"></script>
+
+    <script>
+        const dt = new DataTable('#datatable', [
+            {
+                id: 'bAdd',
+                text: 'agregar',
+                icon: 'add-circle',
+                action: function(){
+                    // codigo del callback
+                }
+            }
+        ]);
+
+        dt.parse(); // se mapea para extraer los datos 
+    </script>
+
 </body>
 </html>
