@@ -135,6 +135,7 @@ class DataTable{
         `;
     }
 
+    // renderiza el header
     renderHeaders(){
         this.element.querySelector('thead tr').innerHTML = '';
 
@@ -143,8 +144,46 @@ class DataTable{
         });
     }
 
+    // renderiza cada fila
     renderRows(){
+        this.element.querySelector('tbody').innerHTML = '';
 
+        let i = 0;
+        const {pointer, total} = this.pagination;
+        const limit = this.pagination.actual * this.pagination.noItemsPerPage;
+
+        for( i = pointer; i < limit; i++){
+            if(i == total) break;
+
+            const {id, values} = this.copyItems[i];
+            const checked = this.isChecked(id);
+
+            let data = '';
+
+            data += `<td class="table-checkbox">
+                        <input type="checkbox" class="datatable-checkbox" data-id="${id}" ${checked? "checked":""} />
+                    </td>`;
+
+            values.forEach(cell => {
+                data += `<td>${cell}</td>`;
+            });
+
+            this.element.querySelector('tbody').innerHTML = `<tr>${data}</tr>`;
+        }
+    }
+
+    // valido si el elemento seleccionado existe 
+    isChecked(){
+        const items = this.selected;
+        let res = false;
+
+        if(items.length == 0 ) return false;
+
+        items.forEach(item => {
+            if(item.id == id) res = true;
+        });
+
+        return res;
     }
 
     renderPagesButtons(){
