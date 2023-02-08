@@ -294,11 +294,48 @@ class DataTable{
     }
 
     renderSearch(){
+        this.element.querySelector('.search-input').addEventListener('input', e => {
+            const query = e.target.value.trim().toLowerCase();
 
+            if(query == ''){
+                this.copyItems = [ ... this.items]; // muestra todos los items
+                this.initPagination(this.copyItems.length, this.numberOfEntries);
+                this.renderRows();
+                this.renderPagesButtons();
+                return;
+            }
+
+            this.search(query);
+
+            this.initPagination(this.copyItems.length, this.numberOfEntries);
+            this.renderRows();
+            this.renderPagesButtons();
+        });
     }
 
-    renderSelectEntries(){
+    // Esta funsion sale de renderSearch
+    search(query){
+        let res = [];
 
+        this.copyItems =  [... this.items];
+
+        for(let i = 0; i < this.copyItems.length; i++){
+            const {id, values} = this.copyItems [i];
+            const row = values;
+
+            for(let j = 0; j < row.length; j++){
+                const cell = row[j];
+
+                if(cell.toLowerCase().indexOf(query) >= 0){
+                    res.push(this.copyItems[i]);
+                    break;
+                }
+            }
+        }
+
+        this.copyItems = [ ... res];
     }
+
+    renderSelectEntries(){}
 }
 
