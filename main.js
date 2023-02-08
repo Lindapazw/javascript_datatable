@@ -228,7 +228,7 @@ class DataTable{
         let limS = Math.min(actualIndex + 2, this.pagination.noPages);
         const missinButtons = buttonsToShow - (limS - limI);
 
-        if(Math.max(limI - missinButtons)){
+        if(Math.max(limI - missinButtons, 0)){
             limI = limI - missinButtons;
         } else if(Math.min(limS + missinButtons, this.pagination.noPages) != this.pagination.noPages){
             limS =limS + missinButtons;
@@ -243,13 +243,23 @@ class DataTable{
         }
 
         pagesContainer.innerHTML = `<ul>${pages}<ul>`;
+
+        //mostrar eventos
+        this.element.querySelectorAll('.pages li button').forEach(button =>{
+            button.addEventListener('click', e =>{
+                this.pagination.actual = parseInt(e.target.getAttribute('data-page'));
+                this.pagination.pointer = (this.pagination.actual * this.pagination.noItemsPerPage) -this.pagination.noItemsPerPage;
+                this.renderRows();
+                this.renderPagesButtons();
+            });
+        });
     }
 
     // Esta funsion sale de renderPagesButtons
     getIteratedButton(start, end){
         let res = '';
-        for(let i = start; i < end; i++){
-            if(i = this.pagination.actual){
+        for(let i = start; i <= end; i++){
+            if(i == this.pagination.actual){
                 res += `<li><span class="active">${i}</span></li>`;
             } else{
                 res += `<li><button data-page="${i}">${i}</button></li>`;
@@ -260,7 +270,27 @@ class DataTable{
     }
 
     renderHeadersButtons(){
+        let html = ''; 
+        const buttonsContainer = this.element.querySelector('.header-buttons-container');
+        const headerButtons = this.headerButtons;
 
+        headerButtons.forEach(button =>{ // cambiar icon 
+            html += `
+                    <li>
+                        <button id="${button.id}">
+                            <i class="material-symbols-outlined">
+                            ${button.icon}
+                            </i>
+                        </button>
+                    </li>
+                    `;
+        });
+
+        buttonsContainer.innerHTML = html;
+
+        headerButtons.forEach(button => {
+            document.querySelector('#' + button.id).addEventListener('click', button.action)
+        });
     }
 
     renderSearch(){
