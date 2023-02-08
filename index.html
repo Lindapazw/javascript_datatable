@@ -173,7 +173,7 @@
                 icon: 'add',
                 action: function(){
                     // codigo del callback
-                    console.log('agregar un nuevo dato');
+                    dt.add(['away', 'Linda Paz', 'CEO', 'Argentina', '28', '2000/12/02']);
                 }
             },
             {
@@ -182,7 +182,8 @@
                 icon: 'delete',
                 action: function(){
                     // codigo del callback
-                    console.log('accion de eliminar');
+                    const elementos = dt.getSelected();
+                    console.log(elementos);
                 }
             }
         ]);

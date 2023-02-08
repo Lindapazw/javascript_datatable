@@ -84,7 +84,6 @@ class DataTable{
         this.renderPagesButtons();
         this.renderHeadersButtons();
         this.renderSearch();  // dibuja la busqueda
-        this.renderSelectEntries(); // dibuja los elementos seleccionados
     }
 
     initPagination(total, entries){
@@ -184,14 +183,14 @@ class DataTable{
                     }
 
                     // ** vemos en consola cada fila seleccionada **
-                    // console.log(this.selected);
+                    console.log(this.selected);
                 });
             });
         }
     }
 
     // valido si el elemento seleccionado existe 
-    isChecked(){
+    isChecked(id){
         const items = this.selected;
         let res = false;
 
@@ -336,6 +335,21 @@ class DataTable{
         this.copyItems = [ ... res];
     }
 
-    renderSelectEntries(){}
+    getSelected(){
+        return this.selected;
+    }
+
+    add(item){
+        const row = {
+            id: this.generateUUID(),
+            values:[]
+        };
+
+        const status = `<span class="${item[0]}"></span>`;
+        item.shift();
+        row.values = [status, ... item];
+        this.items = [row, ... this.items];
+        this.makeTable();
+    }
 }
 
